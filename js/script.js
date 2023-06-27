@@ -43,39 +43,6 @@ function showError(message) {
   errorSign.textContent = message;
 }
 
-// Update password length number as user moves the slider
-document.querySelector("#length").addEventListener("input", function() {
-  document.querySelector("#length-value").value = this.value;
-});
-
-// Handle user typing a custom password length
-document.querySelector("#length-value").addEventListener("change", function() {
-  // Parse input
-  this.value = parseInt(this.value);
-
-  // Set length to 8 if user input not a number
-  if(isNaN(this.value)) {
-    this.value = 8;
-  } else {
-    // Clamp value to 8-128
-    this.value = Math.max(8, Math.min(this.value, 128));
-  }
-  document.querySelector("#length-value").value = this.value;
-  document.querySelector("#length").value = this.value;
-});
-
-// Copy password to clipboard when user clicks the password field
-document.querySelector("#password").addEventListener("click", function() {
-  // Only proceed if password field isn't empty
-  if(!this.value) { return; }
-  
-  navigator.clipboard.writeText(this.value).then(function() {
-    flashCopyMessage();
-  }, function(err) {
-    console.error('Could not copy text: ', err);
-  });
-});
-
 function flashCopyMessage() {
   // TODO: Display a temporary message to the user that the password was copied to the clipboard
   document.querySelector("#copyresult").classList.remove("fade-out");
@@ -84,9 +51,6 @@ function flashCopyMessage() {
     document.querySelector("#copyresult").classList.add("fade-out");
   }, 700);
 }
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
@@ -104,5 +68,44 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// Wait for document ready
+document.addEventListener("DOMContentLoaded", function() {
+  
+  // Update password length number as user moves the slider
+  document.querySelector("#length").addEventListener("input", function() {
+    document.querySelector("#length-value").value = this.value;
+  });
+
+
+  // Handle user typing a custom password length
+  document.querySelector("#length-value").addEventListener("change", function() {
+    // Parse input
+    this.value = parseInt(this.value);
+
+    // Set length to 8 if user input not a number
+    if(isNaN(this.value)) {
+      this.value = 8;
+    } else {
+      // Clamp value to 8-128
+      this.value = Math.max(8, Math.min(this.value, 128));
+    }
+    document.querySelector("#length-value").value = this.value;
+    document.querySelector("#length").value = this.value;
+  });
+
+
+  // Copy password to clipboard when user clicks the password field
+  document.querySelector("#password").addEventListener("click", function() {
+    // Only proceed if password field isn't empty
+    if(!this.value) { return; }
+    
+    navigator.clipboard.writeText(this.value).then(function() {
+      flashCopyMessage();
+    }, function(err) {
+      console.error('Could not copy text: ', err);
+    });
+  });
+
+  // Add event listener to generate button
+  document.querySelector("#generate").addEventListener("click", writePassword);
+});
