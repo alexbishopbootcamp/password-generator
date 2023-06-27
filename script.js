@@ -7,7 +7,7 @@ function generatePassword(){
   const lower = "abcdefghijklmnopqrstuvwxyz";
   const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const number = "0123456789";
-  const special = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
+  const special = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
   // Initialize our character set
   let charset = '';
