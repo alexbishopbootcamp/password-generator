@@ -78,6 +78,11 @@ document.querySelector("#password").addEventListener("click", function() {
 
 function flashCopyMessage() {
   // TODO: Display a temporary message to the user that the password was copied to the clipboard
+  document.querySelector("#copyresult").classList.remove("fade-out");
+  // Wait a bit before fading out
+  setTimeout(function() {
+    document.querySelector("#copyresult").classList.add("fade-out");
+  }, 700);
 }
 
 // Get references to the #generate element
