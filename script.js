@@ -1,5 +1,8 @@
 // Assignment code here
 function generatePassword(){
+  // Clear any previous errors
+  showError("");
+  
   // Character sets
   const lower = "abcdefghijklmnopqrstuvwxyz";
   const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -17,7 +20,8 @@ function generatePassword(){
 
   // Alert the user if no character sets are selected
   if (charset.length === 0) {
-    return('Please select at least one character set.');
+    showError("Please select at least one character set.");
+    return;
   }
   
   // Get password length
@@ -31,6 +35,12 @@ function generatePassword(){
 
   // Return password
   return password;
+}
+
+function showError(message) {
+  const errorSign = document.querySelector("#error");
+
+  errorSign.textContent = message;
 }
 
 // Update password length number as user moves the slider
@@ -56,12 +66,17 @@ document.querySelector("#length-value").addEventListener("input", function() {
 
 
 
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+
+  // Bail if empty password is returned
+  if(!password) { return; }
+
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;

@@ -163,3 +163,7 @@ button[disabled] {
   grid-column: span 2;
   display: flex;
 }
+
+#error {
+  color: hsl(360, 91%, 36%);
+}
