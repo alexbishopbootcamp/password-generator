@@ -66,6 +66,9 @@ document.querySelector("#length-value").addEventListener("change", function() {
 
 // Copy password to clipboard when user clicks the password field
 document.querySelector("#password").addEventListener("click", function() {
+  // Only proceed if password field isn't empty
+  if(!this.value) { return; }
+  
   navigator.clipboard.writeText(this.value).then(function() {
     flashCopyMessage();
   }, function(err) {
