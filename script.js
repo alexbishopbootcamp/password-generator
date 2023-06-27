@@ -64,8 +64,18 @@ document.querySelector("#length-value").addEventListener("change", function() {
   document.querySelector("#length").value = this.value;
 });
 
+// Copy password to clipboard when user clicks the password field
+document.querySelector("#password").addEventListener("click", function() {
+  navigator.clipboard.writeText(this.value).then(function() {
+    flashCopyMessage();
+  }, function(err) {
+    console.error('Could not copy text: ', err);
+  });
+});
 
-
+function flashCopyMessage() {
+  // TODO: Display a temporary message to the user that the password was copied to the clipboard
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
