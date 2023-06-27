@@ -49,7 +49,7 @@ document.querySelector("#length").addEventListener("input", function() {
 });
 
 // Handle user typing a custom password length
-document.querySelector("#length-value").addEventListener("input", function() {
+document.querySelector("#length-value").addEventListener("change", function() {
   // Parse input
   this.value = parseInt(this.value);
 
