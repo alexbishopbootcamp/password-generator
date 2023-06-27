@@ -99,6 +99,9 @@ function writePassword() {
 
   passwordText.value = password;
 
+  // Make copy text visible
+  document.querySelector(".copy").classList.remove("invisible");
+
 }
 
 // Add event listener to generate button
