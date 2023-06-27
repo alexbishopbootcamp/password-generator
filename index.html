@@ -17,15 +17,44 @@
           <h2>Generate a Password</h2>
         </div>
         <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
+          <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
+          <div class="form-group">
+
+            <!-- Password length slider -->`
+            <div class="span2">
+              <!-- Make the length-value a typable field so that users can type in custom values easily -->
+              <label for="length" id="length-label">Password length: <input id="length-value" placeholder="8"></label>
+              <input type="range" min="8" max="128" value="8" class="form-control-range" id="length"/>
+            </div>
+
+            <!-- lowercase char set toggle -->
+            <div>
+              <input type="checkbox" class="form-check-input" id="lowercase" checked/>
+              <label for="lowercase" class="form-check-label">Include lowercase letters</label>
+            </div>
+
+            <!-- uppercase char set toggle -->
+            <div>
+              <input type="checkbox" class="form-check-input" id="uppercase" checked/>
+              <label for="uppercase" class="form-check-label">Include uppercase letters</label>
+            </div>
+
+            <!-- numeric char set toggle -->
+            <div>
+              <input type="checkbox" class="form-check-input" id="numeric" checked/>
+              <label for="numeric" class="form-check-label">Include numbers</label>
+            </div>
+
+            <!-- special char set toggle -->
+            <div>
+              <input type="checkbox" class="form-check-input" id="special" checked/>
+              <label for="special" class="form-check-label">Include special characters</label>
+            </div>
+
+          </div>
+          <div class="card-footer">
+            <button id="generate" class="btn">Generate Password</button>
         </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
         </div>
       </div>
     </div>

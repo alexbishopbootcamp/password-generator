@@ -135,3 +135,31 @@ button[disabled] {
     font-size: 0.8rem;
   }
 }
+
+.form-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-group > div {
+  margin: 10px;
+}
+
+/* Give the slider value display some space as the number grows */
+#length-value {
+  display: inline-block;
+  width: 32px;
+  margin-left: 10px;
+  border-color: hsl(0, 0%, 79%);
+}
+
+/* Put label and slider in a flexbox so the slider occupies remainding space */
+.form-control-range {
+  flex-grow: 1;
+  margin-left: 16px;
+}
+
+.span2 {
+  grid-column: span 2;
+  display: flex;
+}
