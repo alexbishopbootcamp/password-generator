@@ -129,11 +129,23 @@ button[disabled] {
   #password {
     font-size: 1rem;
   }
+
+  .copy {
+    font-size: 1rem;
+  }
+
+  .form-group {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 500px) {
   .btn {
     font-size: 0.8rem;
+  }
+
+  .card-header {
+    text-align: center;
   }
 }
 
@@ -142,7 +154,7 @@ button[disabled] {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.form-group > div {
+.form-item {
   margin: 10px;
 }
 
@@ -157,7 +169,10 @@ button[disabled] {
 /* Put label and slider in a flexbox so the slider occupies remainding space */
 .form-control-range {
   flex-grow: 1;
-  margin-left: 16px;
+}
+
+.span1 {
+  grid-column: span 1;
 }
 
 .span2 {
@@ -181,6 +196,7 @@ button[disabled] {
   transform: translate(-50%, -50%);
   /* prevent interception of mouse click events */
   pointer-events: none;
+  white-space: nowrap;
 }
 
 #copyresult {
@@ -211,4 +227,9 @@ button[disabled] {
 
 .invisible {
   visibility: hidden;
+}
+
+/* Reduce the top margin on the slider row to put it closer to the numeric input */
+.short-margin {
+  margin-top: 0px;
 }
