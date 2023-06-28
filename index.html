@@ -21,13 +21,18 @@
           <div style="position: relative">
             <div class="copy invisible">
               <div id="copytext">Click to copy to clipboard</div>
-              <div id="copyresult" class="fade-out">
-                <!-- Check mark SVG image -->
-                <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                  <g fill="none" stroke="#008000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="14,24 20,30 34,16"></polyline>
-                  </g>
-                </svg>           
+              <div id="copyresult">
+                <div id="copysuccess" class="fade-out">
+                  <!-- Check mark SVG image -->
+                  <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="none" stroke="#008000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="14,24 20,30 34,16"></polyline>
+                    </g>
+                  </svg>      
+                </div>
+                <div id="copyfail" class="fade-out">
+                   Failed to copy
+                </div>
               </div>
             </div>
             <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>

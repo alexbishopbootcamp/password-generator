@@ -43,12 +43,19 @@ function showError(message) {
   errorSign.textContent = message;
 }
 
-function flashCopyMessage() {
-  // TODO: Display a temporary message to the user that the password was copied to the clipboard
-  document.querySelector("#copyresult").classList.remove("fade-out");
+function flashCopySuccess() {
+  document.querySelector("#copysuccess").classList.remove("fade-out");
   // Wait a bit before fading out
   setTimeout(function() {
-    document.querySelector("#copyresult").classList.add("fade-out");
+    document.querySelector("#copysuccess").classList.add("fade-out");
+  }, 700);
+}
+
+function flashCopyFailed() {
+  document.querySelector("#copyfail").classList.remove("fade-out");
+  // Wait a bit before fading out
+  setTimeout(function() {
+    document.querySelector("#copyfail").classList.add("fade-out");
   }, 700);
 }
 
@@ -100,8 +107,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if(!this.value) { return; }
     
     navigator.clipboard.writeText(this.value).then(function() {
-      flashCopyMessage();
+      flashCopySuccess();
     }, function(err) {
+      flashCopyFailed();
       console.error('Could not copy text: ', err);
     });
   });
