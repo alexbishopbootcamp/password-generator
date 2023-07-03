@@ -1,5 +1,8 @@
 // Assignment code here
 function generatePassword(){
+  // Clear any previous errors
+  showError("");
+  
   // Character sets
   const lower = "abcdefghijklmnopqrstuvwxyz";
   const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

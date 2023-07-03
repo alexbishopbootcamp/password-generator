@@ -190,6 +190,7 @@ button[disabled] {
 
 #error {
   color: var(--error-color);
+  text-align: center;
 }
 
 .copy {
