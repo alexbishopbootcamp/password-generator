@@ -1,8 +1,5 @@
 // Assignment code here
 function generatePassword(){
-  // Clear any previous errors
-  showError("");
-  
   // Character sets
   const lower = "abcdefghijklmnopqrstuvwxyz";
   const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -103,6 +100,7 @@ function finishQuestions(){
     }
 }
 
+// To allow the password length and character sets to be changed in two different locations, we'll move the settings form into the modal when the user clicks the generate button
 function showQuestions(){
   const modal = document.querySelector(".modal");
   const settingsForm = document.querySelector(".form-group");
@@ -141,6 +139,8 @@ function writePassword(){
 
 // Write password to the #password input
 function generate() {
+  // Always clear error message
+  showError("");
   // Check if the quick settings are closed
   if(!document.querySelector("#quick-menu").checked) {
     // Get settings by prompting user sequentially
