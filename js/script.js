@@ -106,12 +106,20 @@ document.addEventListener("DOMContentLoaded", function() {
     // Only proceed if password field isn't empty
     if(!this.value) { return; }
     
+    // Copy password to clipboard
     navigator.clipboard.writeText(this.value).then(function() {
       flashCopySuccess();
     }, function(err) {
       flashCopyFailed();
       console.error('Could not copy text: ', err);
     });
+  });
+
+  // Show quick settings when user toggles the quick settings radio button
+  document.querySelector("#quick-menu").addEventListener("change", function() {
+    for(elem of document.querySelectorAll(".quick-setting")) {
+      elem.classList.toggle("hidden");
+    }
   });
 
   // Add event listener to generate button
