@@ -59,8 +59,71 @@ function flashCopyFailed() {
   }, 700);
 }
 
-// Write password to the #password input
-function writePassword() {
+function askForPasswordLength(){
+  for(elem of document.querySelectorAll(".password-length")) {
+    elem.classList.remove("hidden");
+  }
+}
+
+function askForCharSets(){
+    // Hide password length settings
+    for(elem of document.querySelectorAll(".password-length")) {
+      elem.classList.add("hidden");
+    }
+
+    // Show character set settings
+    for(elem of document.querySelectorAll(".charset")) {
+      elem.classList.remove("hidden");
+    }
+
+    // Hide next button
+    document.querySelector(".next-button").classList.add("hidden");
+    // Show finish button
+    document.querySelector(".finish-button").classList.remove("hidden");
+}
+
+function finishQuestions(){
+    // Proceed if password is generated successfully
+    if(writePassword()) {
+
+      // Return elements to original positions
+      document.querySelector(".settings").appendChild(document.querySelector(".form-group"));
+      document.querySelector(".card-footer").appendChild(document.querySelector("#error"));
+
+      // Hide finish button
+      document.querySelector(".finish-button").classList.add("hidden");
+
+      // Hide character set settings
+      for(elem of document.querySelectorAll(".charset")) {
+        elem.classList.add("hidden");
+      }
+
+      // Close the modal
+      document.querySelector(".modal").close();
+    }
+}
+
+function showQuestions(){
+  const modal = document.querySelector(".modal");
+  const settingsForm = document.querySelector(".form-group");
+
+  // Move our settings form into the modal
+  modal.appendChild(settingsForm);
+
+  // Start the questions with the password length
+  askForPasswordLength();
+
+  // Show the next button
+  document.querySelector(".next-button").classList.remove("hidden");
+
+  // Move error field into modal
+  modal.appendChild(document.querySelector("#error"));
+
+  // Show the modal
+  modal.showModal();
+}
+
+function writePassword(){
   var password = generatePassword();
 
   // Bail if empty password is returned
@@ -72,6 +135,19 @@ function writePassword() {
 
   // Make copy text visible
   document.querySelector(".copy").classList.remove("invisible");
+
+  return password;  
+}
+
+// Write password to the #password input
+function generate() {
+  // Check if the quick settings are closed
+  if(!document.querySelector("#quick-menu").checked) {
+    // Get settings by prompting user sequentially
+    showQuestions();
+  } else {
+    writePassword();
+  }
 
 }
 
@@ -123,5 +199,15 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // Add event listener to generate button
-  document.querySelector("#generate").addEventListener("click", writePassword);
+  document.querySelector("#generate").addEventListener("click", generate);
+
+  // Add event listener to next button
+  document.querySelector("#next").addEventListener("click", function() {
+    askForCharSets();
+  });
+
+  // Add event listener to finish button
+  document.querySelector("#finish-questions").addEventListener("click", () => {
+    finishQuestions();
+  });
 });

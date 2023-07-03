@@ -251,3 +251,21 @@ button[disabled] {
 .short-margin {
   margin-top: 0px;
 }
+
+.next-button {
+  justify-content: center;
+  align-items: center;
+}
+
+.finish-button {
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-desc {
+  grid-column: span 2;
+}
+
+.modal {
+  border-radius: 8px;
+}
